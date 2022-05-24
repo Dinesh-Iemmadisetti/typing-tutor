@@ -5,14 +5,16 @@
 #include<iostream>
 #include<string>
 using namespace std;
-
-class ExistingUser
+/*
+existinguser class to validate the user given name and password
+*/
+class ExistingUser  
 {
-	string name;
-	string password;
-	int nameAndPasswordValidation();
+	string name; //stores the user name
+	string password; // stores the user password
+	int nameAndPasswordValidation(); //to validate the name and password
 public:
-	ExistingUser();
-	int validate();
+	ExistingUser(); //constructor
+	int validate(); //validates the user given data
 };
 #endif
