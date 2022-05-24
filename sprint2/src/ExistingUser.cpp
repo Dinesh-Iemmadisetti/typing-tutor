@@ -17,6 +17,7 @@ enum STATUS{FAIL,SUCCESS};
 //global vector
 vector<First> eu;
 //constructor
+
 ExistingUser::ExistingUser()
 {
 	name="NULL";//initilizing name with null
@@ -26,7 +27,7 @@ ExistingUser::ExistingUser()
 	string name1;//to store name from database.txt
 	string password1;//to store password from database.txt
 	string mobile1;//to store mobile number from database.txt
-	ifstream in("./../database/database.txt");
+	ifstream in("./../database/database.txt");//open file database.txt in read mode
 	try
 	{
 		if(in.is_open())
