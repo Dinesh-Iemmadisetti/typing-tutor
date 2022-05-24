@@ -12,19 +12,20 @@
 #include"Password.h"
 #include"First.h"
 using namespace std;
+//enumerator for fail and success
 enum STATUS{FAIL,SUCCESS};
-
+//global vector
 vector<First> eu;
-
+//constructor
 ExistingUser::ExistingUser()
 {
-	name="NULL";
-	password="NULL";
+	name="NULL";//initilizing name with null
+	password="NULL";//initilizing password with null
 
-	First obj1;
-	string name1;
-	string password1;
-	string mobile1;
+	First obj1;//object of class First 
+	string name1;//to store name from database.txt
+	string password1;//to store password from database.txt
+	string mobile1;//to store mobile number from database.txt
 	ifstream in("./../database/database.txt");
 	try
 	{
