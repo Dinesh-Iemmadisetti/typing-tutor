@@ -1,3 +1,15 @@
+/**********************************************************************************
+**
+** FILENAME : TypeWriter.cpp
+**
+** DESCRIPTIION :It will show the difficulty options and user can select from it and start typing at the and it will show WPM,accuracy of wrong letters,accuracy 
+		  of correct letters and WPM(words per minute) of file.
+**
+**    CREATED BY                 DATE
+**---------------------------------------------------------
+**  Team-1          		30-03-2022
+**
+********************************************************************************/
 #include<iostream>
 #include<stdio.h>
 #include<string.h>
@@ -100,20 +112,61 @@ fstream TypeWriter :: selectDifficulty()
 	if(choice==1)
 	{
 		fstream select;
-		select.open("./../text/easy.txt",ios::in|ios::out);
-                return select;
-        }
+		try
+		{
+			select.open("./../text/easy.txt",ios::in|ios::out);
+			if(select.is_open())
+			   {
+                		return select;
+			   }
+			   else
+			   	throw 1;
+			   
+    		 }
+		catch(int x)
+		   {
+				cout<<"easy.txt file not found"<<endl;
+				exit(0);
+		   }
+	}
         else if(choice==2)
         {
                fstream select;
-               select.open("./../text/medium.txt",ios::in|ios::out);
-               return select;
+		try
+		{
+               		select.open("./../text/medium.txt",ios::in|ios::out);
+			if(select.is_open())
+			{
+               			return select;
+			}
+			else
+				throw 1;
+		}
+		catch(int x)
+		{
+			cout<<"medium.txt file not found"<<endl;
+			exit(0);
+		}
         }
         else if(choice==3)
         {
               fstream select;
-              select.open("./../text/hard.txt",ios::in|ios::out);
-              return select;
+		try
+		{
+             		 select.open("./../text/hard.txt",ios::in|ios::out);
+			if(select.is_open())
+			{
+              			return select;
+			}
+			else
+				throw 1;
+		}
+		catch(int x)
+		{
+			cout<<"hard.txt file not found"<<endl;
+			exit(0);
+		}
+		
         }
 	else
 		goto A;
