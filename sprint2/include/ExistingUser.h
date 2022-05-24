@@ -1,3 +1,10 @@
+/******************************
+filename:ExistingUser.h
+description:This class declares private and public variables and methods to validate the user give details
+created by            date:
+    Team-1            24-05-2022
+********************************/
+
 #ifndef CLASS_EXISTING_USER_HEADER
 //enum STATUS{FAIL=0,SUCCESS};
 
