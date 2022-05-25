@@ -26,12 +26,12 @@ vector<First> nu; // globally declared vector of type first
 
 /**********************************************************************************
 **
-**constructor : NewUser
+** Constructor : NewUser
 **
 ** DESCRIPTIION : constructor of newuser takes the data from the database text file in to 
                    the vector of type first.
 **
-**  Return type : no return 
+** Return type : no return 
 **
 ********************************************************************************/
 
@@ -78,7 +78,7 @@ NewUser::NewUser()
 	{
 		if(x==1)
 		{
-			cout<<"database.txt file not exists"<<endl;
+			cout<<"\t database.txt file not exists"<<endl;
 			exit(0);
 		}
 	}
@@ -99,7 +99,7 @@ int NewUser::ageCheck()
 	
 	if(this->age<7||this->age>110)
 	{
-		cout<<"age should not be less then 7 or greater then 110"<<endl;
+		cout<<"*** Age should not be less then 7 or greater then 110 ***"<<endl;
 		return FAIL;
 	}
 	else
@@ -110,7 +110,7 @@ int NewUser::ageCheck()
 }
 /**********************************************************************************
 **
-**constructor : mobileValidation
+** Constructor : mobileValidation
 **
 ** DESCRIPTIION : This function validates the mobile number
 **
@@ -123,7 +123,7 @@ int NewUser::mobileValidation()
 	if(mobile.length()!=10)
 	{
 		
-		cout<<"invalid phone number try again\n";
+		cout<<"\t Invalid phone number try again\n";
 		return FAIL;
 	}
 //	else if(mobile.length()==10)
@@ -132,7 +132,7 @@ int NewUser::mobileValidation()
 		int check=this->mobile.find_first_not_of("1234567890");
 		if(check!=-1)
 		{
-			cout<<"invalid phone number try again\n";
+			cout<<"\t Invalid phone number try again\n";
 			return FAIL;
  		}
 		else
@@ -141,7 +141,7 @@ int NewUser::mobileValidation()
 			{
 				if(f.getMobile()==this->mobile)
 				{
-					cout<<"Number already Exists"<<endl;
+					cout<<"\t Number already Exists"<<endl;
 					return FAIL;
 				}
 			}
@@ -172,14 +172,14 @@ int NewUser::nameValidate()
 		{
 			if(d.getName()==this->name)
 			{
-				cout<<"Name Already Exists"<<endl;
+				cout<<"\t Name Already Exists"<<endl;
 				return FAIL;
 			}
 		}
 	}
 	else
 	{
-		cout<<"spaceses not allowed in Username "<<endl;
+		cout<<"\t Spaces not allowed in Username "<<endl;
 		return FAIL;
 	}
 			
@@ -219,7 +219,7 @@ int NewUser :: WriteintoFile()
 	{
 		if(x==1)
 		{
-			cout<<"database.txt"<<endl;
+			cout<<"\t database.txt"<<endl;
 			exit(0);
 		//	return FAIL;
 		}
@@ -240,8 +240,8 @@ int NewUser :: WriteintoFile()
 
 int NewUser::add_user()
 {
-	cout<<"\tEnter the details to Register \n"<<endl;
-	A:cout<<"Enter Name with out spaceses     :";
+	cout<<"\t Enter the details to Register \n"<<endl;
+	A:cout<<"\t Enter Name with out spaceses     :";
 	cin>>this->name;
 	__fpurge(stdin);
 	if(SUCCESS!=nameValidate())
@@ -250,28 +250,28 @@ int NewUser::add_user()
 
 	}
 
-	P:cout<<"Enter Password(length should be 8 characters :";
+	P:cout<<"\t Enter Password(length should be 8 characters : ";
 	cin>>this->password;
 	__fpurge(stdin);
 	
 
 	if(password.length()!=8)
 	{
-		cout<<"password did not meet the character size"<<endl;
+		cout<<"\t password did not meet the character size"<<endl;
 		goto P; 
 	}
 
-	G:cout<<"Enter Age        :";
+	G:cout<<"\t Enter Age        :";
 	cin>>age;
 	__fpurge(stdin);
 
 	if(SUCCESS!=ageCheck())
 	{
-		cout<<"Invalid age"<<endl;
+		cout<<"\t Invalid age"<<endl;
 		goto G;
 	}
 
-	M:cout<<"Enter Mobile No. :";
+	M:cout<<"\t Enter Mobile No. :";
 	cin>>this->mobile;
 	__fpurge(stdin);
 
@@ -282,12 +282,12 @@ int NewUser::add_user()
 
 	if(SUCCESS==WriteintoFile())
 	{
-		cout<<"Sucessfully registered "<<endl;
+		cout<<"\t**** Successfully registered ****"<<endl;
 		return SUCCESS;
 	}
 	else
 	{
-		cout<<"Not Registered"<<endl;
+		cout<<"\t *** Not Registered ***"<<endl;
 		return FAIL;
 	}
 	
