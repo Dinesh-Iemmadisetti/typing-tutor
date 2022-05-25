@@ -1,3 +1,15 @@
+/**********************************************************************************
+**
+** FILENAME : TypeWriter.cpp
+**
+** DESCRIPTIION :It will show the difficulty options and user can select from it and start typing at the and it will show WPM,accuracy of wrong letters,accuracy 
+		  of correct letters and WPM(words per minute) of file.
+**
+**    CREATED BY                 DATE
+**---------------------------------------------------------
+**  Team-1          		24-05-2022
+**
+********************************************************************************/
 #include<iostream>
 #include<stdio.h>
 #include<string.h>
@@ -8,9 +20,19 @@
 #include<memory>
 #include<stdexcept>
 #include"TypeWriter.h"
+//enumerator faii=0 success=1
 enum STATUS{FAIL,SUCCESS};
 using namespace std;
-
+//TypeWriter constructor initilizing data variables with zero
+/*********************************************************************
+**
+**Typewriter NAME: TypeWriter() 
+**
+**DESCRIPTION : TypeWriter constructor initilizing data variables with zero
+**
+**RETURNS: no return
+**
+**********************************************************************/
 TypeWriter::TypeWriter()
 {
 	correct_words=0;
@@ -19,7 +41,15 @@ TypeWriter::TypeWriter()
         wrong_letters=0;
 }
 
-
+/*********************************************************************
+**
+** FUNCTION NAME : wordsAndLettersCompare
+**
+**DESCRIPTION : This function compares words and letters of two given string
+**
+**RETURNS: int
+**
+**********************************************************************/
 int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 {
 
@@ -79,6 +109,16 @@ int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 		//					cout<<"Wrong : "<<wrong_words<<endl;
 }
 
+/*********************************************************************
+**
+** FUNCTION NAME :setZero
+**
+**DESCRIPTION : This function declares all the data members to zero
+**
+**RETURNS: int
+**
+**********************************************************************/
+
 int TypeWriter :: setZero()
 {
 	wrong_words=0;
@@ -87,42 +127,20 @@ int TypeWriter :: setZero()
 	correct_letters=0;
 	return SUCCESS;
 }
-/*
-fstream TypeWriter :: selectDifficulty()
-{
-	int choice=0;
-	A:cout<<"Select Difficulty Levels"<<endl;
-	cout<<"1.Easy"<<endl;
-	cout<<"2.Moderate"<<endl;
-	cout<<"3.Difficult"<<endl;
-	cin>>choice;
-	__fpurge(stdin);
-	if(choice==1)
-	{
-		fstream select;
-		select.open("./../text/easy.txt",ios::in|ios::out);
-                return select;
-        }
-        else if(choice==2)
-        {
-               fstream select;
-               select.open("./../text/medium.txt",ios::in|ios::out);
-               return select;
-        }
-        else if(choice==3)
-        {
-              fstream select;
-              select.open("./../text/hard.txt",ios::in|ios::out);
-              return select;
-        }
-	else
-		goto A;
-	
 
-}*/
+/*********************************************************************
+**
+** FUNCTION NAME : selectDifficulty
+**
+**DESCRIPTION : This function allows to select the difficulty levels
+**
+**RETURNS: fstream
+**
+**********************************************************************/
+
 fstream TypeWriter :: selectDifficulty()
 {
-	int choice=0;
+	int choice=0;//to select the text file
 	A:cout<<"Select Difficulty Levels"<<endl;
 	cout<<"1.Easy"<<endl;
 	cout<<"2.Moderate"<<endl;
@@ -131,7 +149,7 @@ fstream TypeWriter :: selectDifficulty()
 	__fpurge(stdin);
 	if(choice==1)
 	{
-		fstream select;
+		fstream select;//to read the text file
 		try
 		{
 			select.open("./../text/easy.txt",ios::in|ios::out);
@@ -151,7 +169,7 @@ fstream TypeWriter :: selectDifficulty()
 	}
         else if(choice==2)
         {
-               fstream select;
+               fstream select;//to read the text file
 		try
 		{
                		select.open("./../text/medium.txt",ios::in|ios::out);
@@ -170,7 +188,7 @@ fstream TypeWriter :: selectDifficulty()
         }
         else if(choice==3)
         {
-              fstream select;
+              fstream select;//to read the text file
 		try
 		{
              		 select.open("./../text/hard.txt",ios::in|ios::out);
@@ -194,21 +212,32 @@ fstream TypeWriter :: selectDifficulty()
 
 }
 
+/*********************************************************************
+**
+** FUNCTION NAME :typeCheckReport
+**
+**DESCRIPTION :This function displays the words per minute ans accuracy of 
+               correct letters and wrong letters
+**
+**RETURNS: int
+**
+**********************************************************************/
+
 int TypeWriter::typeCheckReport()
 {
 	B:
-	int choice=0;
-	char line[100];
-	char write[100];
-	time_t start=0,end=0,time_per_line=0,total=0;
-	int c_word=0;
-	int c_line=0;
-	int wpm=0;
-	int l_num=0;
-	int w_line=0;
-	string s1;
-	fstream inout;
-	inout=selectDifficulty();
+	int choice=0;//to select retry or exit
+	char line[100];//store the lines of text files
+	char write[100];//store user written line
+	time_t start=0,end=0,time_per_line=0,total=0;//star time,end time,time per line,total time
+	int c_word=0;//count word per each line
+	int c_line=0;//count correct lines
+	int wpm=0;//words per minute
+	int l_num=0;//to show line numbers for text file data
+	int w_line=0;//cout wrong line count
+	string s1;//string to store write
+	fstream inout;//fstream obj to store return value of selectDifficulty
+	inout=selectDifficulty();//stroing the return type
 //	inout.open("./../text/test.txt",ios::in|ios::out);
 
 	if(inout.is_open())
