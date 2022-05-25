@@ -2,7 +2,7 @@
 **
 ** FILENAME : ExistingUser.cpp
 **
-** DESCRIPTIION : In this 
+** DESCRIPTIION : It will validate the Existing User by comparing name and password with the Database.txt file and mask the password with asterick(*).
 **
 **    CREATED BY                   DATE
 **---------------------------------------------------------
@@ -29,11 +29,11 @@ vector<First> eu;
 
 /*********************************************************************
 **
-**Constructor NAME: ExistingUser() 
+** Function NAME: ExistingUser() 
 **
-**DESCRIPTION : Constructor of Existing User takes Name and Password for validation from database.txt file.
+** DESCRIPTION  : This function retrive the User details such as Name,Password,Mobile for validation from database.txt file.
 **
-**RETURNS: No return
+** RETURNS : No return
 **
 **********************************************************************/
 ExistingUser::ExistingUser()
@@ -88,7 +88,7 @@ ExistingUser::ExistingUser()
 **
 ** Function    : nameAndPasswordValidation 
 **
-** DESCRIPTION : This function validates the given Name and Password.  
+** DESCRIPTION : This function validates the given existing user with Password.  
 **
 ** RETURNS: int
 **
