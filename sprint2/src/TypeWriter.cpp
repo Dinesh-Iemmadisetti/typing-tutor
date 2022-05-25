@@ -141,11 +141,11 @@ int TypeWriter :: setZero()
 fstream TypeWriter :: selectDifficulty()
 {
 	int choice=0;//to select the text file
-	A:cout<<"Select Difficulty Levels"<<endl<<endl;
+	A:cout<<"\nSelect Difficulty Levels"<<endl<<endl;
 	cout<<"** 1.Easy"<<endl;
 	cout<<"** 2.Moderate"<<endl;
 	cout<<"** 3.Difficult"<<endl;
-	cout<<" Enter the choice : ";
+	cout<<"\n Enter the choice : ";
 	cin>>choice;
 	__fpurge(stdin);
 	if(choice==1)
@@ -253,9 +253,9 @@ int TypeWriter::typeCheckReport()
 				break;
 
 			++l_num;
-			cout<<"\t Line no "<<l_num<<" :"<<line<<endl;
+			cout<<"\n\t Line no "<<l_num<<" :"<<line<<endl;
 			start=time(NULL);
-			cout<<"\t  Type here :";
+			cout<<"\t Type here :";
 			fgets(write,100,stdin);
 			write[strlen(write)-1]='\0';
 			string s2(write);
@@ -455,16 +455,16 @@ int TypeWriter::typeCheckReport()
 		cout<<"  Wrong words    : "<<wrong_words<<endl;
 //		cout<<"  Wrong lines    : "<<w_line<<endl;
 //		cout<<"  Correct line   : "<<c_line<<endl;
-		cout<<"  Wrong letters of entire text file                      : "<<wrong_letters<<endl;
-		cout<<"  Correct letters of entire text file                    : "<<correct_letters<<endl;
-		cout<<"\n  Accuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100)/(wrong_letters + correct_letters)<<endl;
-		cout<<"\n  Accuracy of correct letters for the entire Text file : "<<(100-(wrong_letters*100)/(wrong_letters + correct_letters))<<endl;
+		cout<<"  Wrong letters of entire text file                    : "<<wrong_letters<<endl;
+		cout<<"  Correct letters of entire text file                  : "<<correct_letters<<endl;
+		cout<<"  Accuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100)/(wrong_letters + correct_letters)<<endl;
+		cout<<"  Accuracy of correct letters for the entire Text file : "<<(100-(wrong_letters*100)/(wrong_letters + correct_letters))<<endl;
 		try
 		{
 			if(correct_words==0)
 				throw correct_words;
 			else
-				cout<<"\n  Words Per Minutes for the entire Text file : "<<(60/(total/(correct_words)))<<endl;
+				cout<<"\n  Words Per Minutes for the entire Text file           : "<<(60/(total/(correct_words)))<<endl;
 		}
 		catch(int x)
 		{
