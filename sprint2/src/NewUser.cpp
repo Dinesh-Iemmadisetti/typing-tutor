@@ -241,7 +241,7 @@ int NewUser :: WriteintoFile()
 int NewUser::add_user()
 {
 	cout<<"\t Enter the details to Register \n"<<endl;
-	A:cout<<"\t Enter Name with out spaceses     :";
+	A:cout<<" Enter Name without space     :";
 	cin>>this->name;
 	__fpurge(stdin);
 	if(SUCCESS!=nameValidate())
