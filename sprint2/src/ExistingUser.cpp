@@ -74,7 +74,7 @@ ExistingUser::ExistingUser()
 	{
 		if(x==1)
 		{
-			cout<<"database.txt file not exists"<<endl;
+			cout<<"\t database.txt file not exists"<<endl;
 			exit(0);
 		}
 	}
@@ -103,7 +103,7 @@ int ExistingUser::nameAndPasswordValidation()
 	
 			if(d.getPassword()==this->password)
 			{
-				cout<<"Login Successful"<<endl;
+				cout<<"\tLogin Successful"<<endl;
 				return SUCCESS;
 			}
 			else
@@ -126,12 +126,12 @@ int ExistingUser::nameAndPasswordValidation()
 int ExistingUser::validate()
 {
 	int choice=0; //choice to retry or exit
-	A:cout<<"Login Page"<<endl;
-	cout<<"Enter User name      :";
+	A:cout<<"\tLogin Page"<<endl;
+	cout<<"\tEnter UserName      :";
 	__fpurge(stdin);
 	cin>>this->name;
 	__fpurge(stdin);
-	password=getpass("Enter Password     :",true);
+	password=getpass("\tEnter Password     :",true);
 	if(SUCCESS==nameAndPasswordValidation())
 	{
 		unique_ptr<TypeWriter>t(new TypeWriter);
@@ -147,8 +147,8 @@ int ExistingUser::validate()
 	}
 	else
 	{
-		cout<<"Invalid Login Credentials"<<endl;
-		cout<<"1.To Try again\npress any key to exit"<<endl;
+		cout<<"\tInvalid Login Credentials "<<endl;
+		cout<<"\t1.To Try again \n press any key to exit"<<endl;
 	//	cin>>choice;
 		scanf("%d",&choice);
 		__fpurge(stdin);
