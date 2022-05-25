@@ -60,12 +60,12 @@ int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 			if(tok1[i]==tok[i])
 			{
 				++correct_letters;
-		//		cout<<"correct_letters : "<<correct_letters<<endl;
+		//		cout<<"\t correct_letters : "<<correct_letters<<endl;
 			}
 			else
 			{
 			++wrong_letters;
-		//	cout<<"wrong_letters : "<<wrong_letters<<endl;
+		//	cout<<"\twrong_letters : "<<wrong_letters<<endl;
 			}
 		}
 			wrong_letters+= (int)tok.length() - (int)tok1.length();
@@ -77,12 +77,12 @@ int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 				if(tok[i]==tok1[i])
 				{
 					++correct_letters;
-		//								cout<<"correct_letters : "<<correct_letters<<endl;
+		//					cout<<"\t correct_letters : "<<correct_letters<<endl;
 				}
 				else
 				{
 					++wrong_letters;
-//						cout<<"wrong_letters : "<<wrong_letters<<endl;
+//						cout<<"\t wrong_letters : "<<wrong_letters<<endl;
 				}
 			}
 		}
@@ -141,10 +141,11 @@ int TypeWriter :: setZero()
 fstream TypeWriter :: selectDifficulty()
 {
 	int choice=0;//to select the text file
-	A:cout<<"Select Difficulty Levels"<<endl;
-	cout<<"1.Easy"<<endl;
-	cout<<"2.Moderate"<<endl;
-	cout<<"3.Difficult"<<endl;
+	A:cout<<"Select Difficulty Levels"<<endl<<endl;
+	cout<<"** 1.Easy"<<endl;
+	cout<<"** 2.Moderate"<<endl;
+	cout<<"** 3.Difficult"<<endl;
+	cout<<" Enter the choice : ";
 	cin>>choice;
 	__fpurge(stdin);
 	if(choice==1)
@@ -163,7 +164,7 @@ fstream TypeWriter :: selectDifficulty()
     		 }
 		catch(int x)
 		   {
-				cout<<"easy.txt file not found"<<endl;
+				cout<<"\t easy.txt file not found"<<endl;
 				exit(0);
 		   }
 	}
@@ -182,7 +183,7 @@ fstream TypeWriter :: selectDifficulty()
 		}
 		catch(int x)
 		{
-			cout<<"medium.txt file not found"<<endl;
+			cout<<"\t medium.txt file not found"<<endl;
 			exit(0);
 		}
         }
@@ -201,7 +202,7 @@ fstream TypeWriter :: selectDifficulty()
 		}
 		catch(int x)
 		{
-			cout<<"hard.txt file not found"<<endl;
+			cout<<"\t hard.txt file not found"<<endl;
 			exit(0);
 		}
 		
@@ -209,7 +210,6 @@ fstream TypeWriter :: selectDifficulty()
 	else
 		goto A;
 	
-
 }
 
 /*********************************************************************
@@ -253,13 +253,13 @@ int TypeWriter::typeCheckReport()
 				break;
 
 			++l_num;
-			cout<<"Line no "<<l_num<<" :"<<line<<endl;
+			cout<<"\t Line no "<<l_num<<" :"<<line<<endl;
 			start=time(NULL);
-			cout<<"Type here :";
+			cout<<"\t  Type here :";
 			fgets(write,100,stdin);
 			write[strlen(write)-1]='\0';
 			string s2(write);
-//			cout<<"line chech : "<<s2.compare(line)<<endl;
+//			cout<<"\t line check : "<<s2.compare(line)<<endl;
 			if(s2.compare(line)==0)
 			{
 				c_line++;
@@ -269,7 +269,7 @@ int TypeWriter::typeCheckReport()
 				w_line++;
 			}
 			string l1=line;
-		//	cout<<"first : "<<l1<<endl;
+		//	cout<<"\t first : "<<l1<<endl;
 			int pos=0;
 			int pos1=0;
 			string tok1;
@@ -319,7 +319,7 @@ int TypeWriter::typeCheckReport()
 							{
 								if(x==1)
 								{
-									cout<<"Exception Occured"<<endl;
+									cout<<"\t Exception Occured"<<endl;
 								}
 
 							}
@@ -351,7 +351,7 @@ int TypeWriter::typeCheckReport()
 								{
 									if(x==1)
 									{
-										cout<<"Exception Occured"<<endl;
+										cout<<"\t Exception Occured"<<endl;
 									}
 
 								}
@@ -398,7 +398,7 @@ int TypeWriter::typeCheckReport()
 							{
 								if(x==1)
 								{
-									cout<<"Exception Occured"<<endl;
+									cout<<"\t Exception Occured"<<endl;
 								}
 
 							}
@@ -436,13 +436,13 @@ int TypeWriter::typeCheckReport()
 			}
 			catch(long int g)
 			{
-				cout<<"divide by zero error"<<endl;
+				cout<<"\t Divide by zero error"<<endl;
 				time_per_line=1;
 				wpm=(c_word * 60)/1;
 			}
 
-			cout<<"\nWords Per Minute for the line :"<<wpm<<endl;
-			cout<<"\n*************************************"<<endl;
+			cout<<"\n** Words Per Minute for the line :"<<wpm<<endl;
+			cout<<"\n***************************************"<<endl;
 			c_word=0;
 			total+=time_per_line;
 //			cout<<"T3 : "<<time_per_line<<endl;
@@ -451,27 +451,27 @@ int TypeWriter::typeCheckReport()
 		inout.close();
 	//	cout<<"Total lines \n"<<w_line + c_line<<endl;
 		cout<<"\n\t\tResults\n\t\t_______\n"<<endl;
-		cout<<"Correct words  :"<<correct_words<<endl;
-		cout<<"Wrong words    :"<<wrong_words<<endl;
-//		cout<<"Wrong lines    :"<<w_line<<endl;
-//		cout<<"Correct line   :"<<c_line<<endl;
-		cout<<"Wrong letters of entire text file                      :"<<wrong_letters<<endl;
-		cout<<"correct letters of entire text file                    :"<<correct_letters<<endl;
-		cout<<"\nAccuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100)/(wrong_letters + correct_letters)<<endl;
-		cout<<"\nAccuracy of correct letters for the entire Text file : "<<(100-(wrong_letters*100)/(wrong_letters + correct_letters))<<endl;
+		cout<<"  Correct words  : "<<correct_words<<endl;
+		cout<<"  Wrong words    : "<<wrong_words<<endl;
+//		cout<<"  Wrong lines    : "<<w_line<<endl;
+//		cout<<"  Correct line   : "<<c_line<<endl;
+		cout<<"  Wrong letters of entire text file                      : "<<wrong_letters<<endl;
+		cout<<"  Correct letters of entire text file                    : "<<correct_letters<<endl;
+		cout<<"\n  Accuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100)/(wrong_letters + correct_letters)<<endl;
+		cout<<"\n  Accuracy of correct letters for the entire Text file : "<<(100-(wrong_letters*100)/(wrong_letters + correct_letters))<<endl;
 		try
 		{
 			if(correct_words==0)
 				throw correct_words;
 			else
-				cout<<"\nWords Per Minutes for the entire Text file : "<<(60/(total/(correct_words)))<<endl;
+				cout<<"\n  Words Per Minutes for the entire Text file : "<<(60/(total/(correct_words)))<<endl;
 		}
 		catch(int x)
 		{
-			cout<<"\nNo correct_words words are written\n";
-			cout<<"\ndivide by Zero exception\n";
+			cout<<"\n  No correct_words words are written\n";
+			cout<<"\n  Divide by Zero exception\n";
 		}
-		cout<<"\npress 1 to retry\npress any key to exit"<<endl;
+		cout<<"\n Press 1 to retry\npress any key to exit"<<endl;
 	//	cin>>choice;
 		scanf("%d",&choice);
 		__fpurge(stdin);
