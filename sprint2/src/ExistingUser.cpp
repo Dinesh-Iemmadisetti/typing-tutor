@@ -103,7 +103,7 @@ int ExistingUser::nameAndPasswordValidation()
 	
 			if(d.getPassword()==this->password)
 			{
-				cout<<"\tLogin Successful"<<endl;
+				cout<<"\n\t*** Login Successful ***"<<endl;
 				return SUCCESS;
 			}
 			else
@@ -126,8 +126,8 @@ int ExistingUser::nameAndPasswordValidation()
 int ExistingUser::validate()
 {
 	int choice=0; //choice to retry or exit
-	A:cout<<"\tLogin Page"<<endl;
-	cout<<"\tEnter UserName      :";
+	A:cout<<"\n\t\t Login Page.\n\t\t-------------\n"<<endl;
+	cout<<"\tEnter UserName     :";
 	__fpurge(stdin);
 	cin>>this->name;
 	__fpurge(stdin);
@@ -147,8 +147,8 @@ int ExistingUser::validate()
 	}
 	else
 	{
-		cout<<"\tInvalid Login Credentials "<<endl;
-		cout<<"\t1.To Try again \n press any key to exit"<<endl;
+		cout<<"\t*** Invalid Login Credentials ***"<<endl;
+		cout<<"\t 1. To Try again \n press any key to exit"<<endl;
 	//	cin>>choice;
 		scanf("%d",&choice);
 		__fpurge(stdin);
