@@ -60,7 +60,7 @@ int main()
 				cout<<"Exit"<<endl;
 				break;
 			default:
-				cout<<"Invalid option\n"<<endl;
+				cout<<"\t Invalid option\n"<<endl;
 		}
 	if(choice==3)
 		break;
