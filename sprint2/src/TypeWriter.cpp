@@ -5,9 +5,9 @@
 ** DESCRIPTIION :It will show the difficulty options and user can select from it and start typing at the and it will show WPM,accuracy of wrong letters,accuracy 
 		  of correct letters and WPM(words per minute) of file.
 **
-**    CREATED BY                 DATE
+**    CREATED BY                  DATE
 **---------------------------------------------------------
-**  Team-1          		24-05-2022
+**      Team-1          	24-05-2022
 **
 ********************************************************************************/
 #include<iostream>
