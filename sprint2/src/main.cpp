@@ -24,9 +24,9 @@ using namespace std;
 **
 ** FUNCTION NAME : main
 **
-**DESCRIPTION : execution of program starts from main function
+** DESCRIPTION : execution of program starts from main function
 **
-**RETURNS : returns 0 on successful execution.
+** RETURNS : returns 0 on successful execution.
 **
 *****************************************************************************/
 int main()
@@ -35,10 +35,10 @@ int main()
 	while(1)
 	{
 
-		cout<<"\t\tWelcome to Type Writing\n\t\t__________________"<<endl;
-		cout<<"\t1. New User registration"<<endl;
-		cout<<"\t2. Existing User Login"<<endl;
-		cout<<"\t3. Exit"<<endl;
+		cout<<"\t\tWelcome to Type Writing\n\t\t______________________"<<endl;
+		cout<<"\t 1. New User registration"<<endl;
+		cout<<"\t 2. Existing User Login"<<endl;
+		cout<<"\t 3. Exit"<<endl;
 		cout<<"\t Enter your choice : ";
 		scanf("%d",&choice);
 		__fpurge(stdin);
@@ -57,7 +57,7 @@ int main()
 				delete e;
 				break;
 			case ex:
-				cout<<"Exit"<<endl;
+				cout<<"  Exit"<<endl;
 				break;
 			default:
 				cout<<"\t Invalid option\n"<<endl;
