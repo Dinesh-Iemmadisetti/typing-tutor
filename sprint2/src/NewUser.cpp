@@ -164,15 +164,25 @@ int NewUser::mobileValidation()
 
 int NewUser::nameValidate()
 {
-	
-	for(First &d : nu)
+	int pos;//to store the postion of space
+	pos=name.find(" ");//get the postion of space.
+	if(pos == -1)
 	{
-		if(d.getName()==this->name)
+		for(First &d : nu)
 		{
-			cout<<"Name already Taken"<<endl;
-			return FAIL;
+			if(d.getName()==this->name)
+			{
+				cout<<"Name Already Exists"<<endl;
+				return FAIL;
+			}
 		}
 	}
+	else
+	{
+		cout<<"spaceses not allowed in Username "<<endl;
+		return FAIL;
+	}
+			
 	return SUCCESS;
 
 }
@@ -230,8 +240,8 @@ int NewUser :: WriteintoFile()
 
 int NewUser::add_user()
 {
-	cout<<"\tEnter the details to create Account\n"<<endl;
-	A:cout<<"Enter Name      :";
+	cout<<"\tEnter the details to Register \n"<<endl;
+	A:cout<<"Enter Name with out spaceses     :";
 	cin>>this->name;
 	__fpurge(stdin);
 	if(SUCCESS!=nameValidate())
