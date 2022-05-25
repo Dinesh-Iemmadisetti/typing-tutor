@@ -240,8 +240,8 @@ int NewUser :: WriteintoFile()
 
 int NewUser::add_user()
 {
-	cout<<"\t Enter the details to Register \n"<<endl;
-	A:cout<<" Enter Name without space     :";
+	cout<<"\n\n\t Enter the details to Register "<<endl;
+	A:cout<<"\t Enter Name without space     :";
 	cin>>this->name;
 	__fpurge(stdin);
 	if(SUCCESS!=nameValidate())
@@ -282,12 +282,12 @@ int NewUser::add_user()
 
 	if(SUCCESS==WriteintoFile())
 	{
-		cout<<"\t**** Successfully registered ****"<<endl;
+		cout<<"\t**** Successfully registered ****\n\n"<<endl;
 		return SUCCESS;
 	}
 	else
 	{
-		cout<<"\t *** Not Registered ***"<<endl;
+		cout<<"\t *** Not Registered ***\n"<<endl;
 		return FAIL;
 	}
 	
