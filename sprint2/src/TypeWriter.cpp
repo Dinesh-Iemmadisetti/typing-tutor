@@ -26,11 +26,11 @@ using namespace std;
 //TypeWriter constructor initilizing data variables with zero
 /*********************************************************************
 **
-**Typewriter NAME: TypeWriter() 
+** Typewriter NAME: TypeWriter() 
 **
-**DESCRIPTION : TypeWriter constructor initilizing data variables with zero
+** DESCRIPTION : TypeWriter constructor initilizing data variables with zero
 **
-**RETURNS: no return
+** RETURNS: no return
 **
 **********************************************************************/
 TypeWriter::TypeWriter()
@@ -45,9 +45,9 @@ TypeWriter::TypeWriter()
 **
 ** FUNCTION NAME : wordsAndLettersCompare
 **
-**DESCRIPTION : This function compares words and letters of two given string
+** DESCRIPTION : This function compares words and letters of two given string
 **
-**RETURNS: int
+** RETURNS: int
 **
 **********************************************************************/
 int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
@@ -113,9 +113,9 @@ int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 **
 ** FUNCTION NAME :setZero
 **
-**DESCRIPTION : This function declares all the data members to zero
+** DESCRIPTION : This function declares all the data members to zero
 **
-**RETURNS: int
+** RETURNS: int
 **
 **********************************************************************/
 
@@ -132,9 +132,9 @@ int TypeWriter :: setZero()
 **
 ** FUNCTION NAME : selectDifficulty
 **
-**DESCRIPTION : This function allows to select the difficulty levels
+** DESCRIPTION : This function allows to select the difficulty levels
 **
-**RETURNS: fstream
+** RETURNS: fstream
 **
 **********************************************************************/
 
@@ -216,10 +216,10 @@ fstream TypeWriter :: selectDifficulty()
 **
 ** FUNCTION NAME :typeCheckReport
 **
-**DESCRIPTION :This function displays the words per minute ans accuracy of 
+** DESCRIPTION :This function displays the words per minute ans accuracy of 
                correct letters and wrong letters
 **
-**RETURNS: int
+** RETURNS: int
 **
 **********************************************************************/
 
