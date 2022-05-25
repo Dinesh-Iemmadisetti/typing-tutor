@@ -1,3 +1,14 @@
+/**********************************************************************************
+**
+** FILENAME : NewUser.cpp
+**
+** DESCRIPTIION : This file takes the details from user like username,password,age,mobile number 
+**                  and stores these details to database.
+**    CREATED BY                   DATE
+**---------------------------------------------------------
+**     Team-1          		24-05-2022
+**
+********************************************************************************/
 #include<iostream>
 #include<vector>
 #include<stdio.h>
@@ -11,21 +22,32 @@
 #include"NewUser.h"
 using namespace std;
 
-vector<First> nu;
+vector<First> nu; // globally declared vector of type first
+
+/**********************************************************************************
+**
+**constructor : NewUser
+**
+** DESCRIPTIION : constructor of newuser takes the data from the database text file in to 
+                   the vector of type first.
+**
+**  Return type : no return 
+**
+********************************************************************************/
 
 NewUser::NewUser()
 {
-	name="NULL";
-	password="NULL";
-	age=0;
-	mobile="NULL";
+	name="NULL"; //initilise name to NULL
+	password="NULL";//initilise password to null
+	age=0;//initilise age to zero
+	mobile="NULL";//initilise mobile to null
 
-	First obj;
+	First obj;// obj of class first
 
-	string name1;
-	string password1;
-	string mobile1;
-	ifstream in("./../database/database.txt");
+	string name1;//to store name from database
+	string password1;//to store password from database
+	string mobile1;//to store mobile from database
+	ifstream in("./../database/database.txt");//open the database.txt file in read mode
 	try
 	{
 		if(in.is_open())
@@ -57,9 +79,20 @@ NewUser::NewUser()
 		if(x==1)
 		{
 			cout<<"database.txt file not exists"<<endl;
+			exit(0);
 		}
 	}
 }
+
+/**********************************************************************************
+**
+** function : ageCheck
+**
+** DESCRIPTIION : This function validates the user given age
+**
+**  Return type : int
+**
+********************************************************************************/
 
 int NewUser::ageCheck()
 {
@@ -75,6 +108,15 @@ int NewUser::ageCheck()
 
 
 }
+/**********************************************************************************
+**
+**constructor : mobileValidation
+**
+** DESCRIPTIION : This function validates the mobile number
+**
+**  Return type : int
+**
+********************************************************************************/
 
 int NewUser::mobileValidation()
 {
@@ -108,6 +150,18 @@ int NewUser::mobileValidation()
 	return SUCCESS;
 }
 
+/**********************************************************************************
+**
+**function name:nameValidate
+**
+** DESCRIPTIION : This function validates the name  
+               
+**
+**  Return type :int
+**
+********************************************************************************/
+
+
 int NewUser::nameValidate()
 {
 	
@@ -123,11 +177,21 @@ int NewUser::nameValidate()
 
 }
 
+/**********************************************************************************
+**
+**function name : WriteintoFile
+ **
+** DESCRIPTIION : This function writes the user details into database file 
+ **
+**  Return type : int
+**
+********************************************************************************/
+
 int NewUser :: WriteintoFile()
 {
 	
-	ofstream w;
-	w.open("./../database/database.txt",ios::app);
+	ofstream w;//object of output stream
+	w.open("./../database/database.txt",ios::app);//open the file in append mode
 	try
 	{
 		if(w.is_open())
@@ -153,6 +217,16 @@ int NewUser :: WriteintoFile()
 	}
 
 }
+
+/**********************************************************************************
+**
+*function name : add_user
+**
+** DESCRIPTIION : This function takes all the user details from the user
+**
+**  Return type : int
+**
+********************************************************************************/
 
 int NewUser::add_user()
 {
