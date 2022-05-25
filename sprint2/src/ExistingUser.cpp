@@ -1,3 +1,14 @@
+/**********************************************************************************
+**
+** FILENAME : ExistingUser.cpp
+**
+** DESCRIPTIION :
+**
+**    CREATED BY                   DATE
+**---------------------------------------------------------
+** 	Team-1          	24-05-2022
+**
+********************************************************************************/
 #include<iostream>
 #include<stdio.h>
 #include<string.h>
@@ -31,14 +42,13 @@ ExistingUser::ExistingUser()
 		if(in.is_open())
 		{
 			while(!in.eof())
-                         {
-				
-				int age1=0;
-				in>>name1;
-	                        in>>password1;
-                                in>>age1;
-                                in>>mobile1;
-                                if(in.eof())
+                         {	
+				int age1=0; 
+				in>>name1; 
+	                        in>>password1; 
+                                in>>age1; 
+                                in>>mobile1; 
+                                if(in.eof()) 
                                     break;
 				obj1.setData(name1,password1,age1,mobile1);
 				eu.push_back(obj1);
@@ -88,7 +98,7 @@ int ExistingUser::nameAndPasswordValidation()
 }
 int ExistingUser::validate()
 {
-	int choice;
+	int choice; //
 	A:cout<<"Login Page"<<endl;
 	cout<<"Enter User name      :";
 	__fpurge(stdin);
