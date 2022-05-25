@@ -2,7 +2,7 @@
 **
 ** FILENAME : ExistingUser.cpp
 **
-** DESCRIPTIION :
+** DESCRIPTIION : In this 
 **
 **    CREATED BY                   DATE
 **---------------------------------------------------------
