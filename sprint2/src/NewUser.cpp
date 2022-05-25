@@ -240,7 +240,7 @@ int NewUser :: WriteintoFile()
 
 int NewUser::add_user()
 {
-	cout<<"\n\n\t Enter the details to Register "<<endl;
+	cout<<"\n\n\t\t Enter the details to Register.\n\t\t --------------------------------\n "<<endl;
 	A:cout<<"\t Enter Name without space     :";
 	cin>>this->name;
 	__fpurge(stdin);
@@ -261,7 +261,7 @@ int NewUser::add_user()
 		goto P; 
 	}
 
-	G:cout<<"\t Enter Age        :";
+	G:cout<<"\t Enter Age        : ";
 	cin>>age;
 	__fpurge(stdin);
 
@@ -271,7 +271,7 @@ int NewUser::add_user()
 		goto G;
 	}
 
-	M:cout<<"\t Enter Mobile No. :";
+	M:cout<<"\t Enter Mobile No. : ";
 	cin>>this->mobile;
 	__fpurge(stdin);
 
