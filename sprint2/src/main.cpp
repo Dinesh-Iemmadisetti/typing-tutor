@@ -39,6 +39,7 @@ int main()
 		cout<<"\t1. New User registration"<<endl;
 		cout<<"\t2. Existing User Login"<<endl;
 		cout<<"\t3. Exit"<<endl;
+		cout<<"\t Enter your choice : ";
 		scanf("%d",&choice);
 		__fpurge(stdin);
 		switch(choice)
