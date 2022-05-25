@@ -27,6 +27,15 @@ enum STATUS{FAIL,SUCCESS};
 
 vector<First> eu;
 
+/*********************************************************************
+**
+**Constructor NAME: ExistingUser() 
+**
+**DESCRIPTION : Constructor of Existing User takes Name and Password for validation from database.txt file.
+**
+**RETURNS: No return
+**
+**********************************************************************/
 ExistingUser::ExistingUser()
 {
 	name="NULL";
@@ -74,7 +83,16 @@ ExistingUser::ExistingUser()
 	
 }
 
-//existing user login 
+//existing user login
+/*********************************************************************
+**
+** Function    : nameAndPasswordValidation 
+**
+** DESCRIPTION : This function validates the given Name and Password.  
+**
+** RETURNS: int
+**
+**********************************************************************/
 int ExistingUser::nameAndPasswordValidation()
 {
 	
@@ -96,6 +114,15 @@ int ExistingUser::nameAndPasswordValidation()
 	return FAIL;
 
 }
+/*********************************************************************
+**
+** Function    : Validate 
+**
+** DESCRIPTION : This function validates the Password and mask it from Users as Asterick(*).  
+**
+** RETURNS: int
+**
+**********************************************************************/
 int ExistingUser::validate()
 {
 	int choice; //
