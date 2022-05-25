@@ -29,7 +29,7 @@ vector<First> eu;
 
 /*********************************************************************
 **
-** Function NAME: ExistingUser() 
+** Constructor: ExistingUser() 
 **
 ** DESCRIPTION  : This function retrive the User details such as Name,Password,Mobile for validation from database.txt file.
 **
@@ -38,14 +38,14 @@ vector<First> eu;
 **********************************************************************/
 ExistingUser::ExistingUser()
 {
-	name="NULL";
-	password="NULL";
+	name="NULL";//initialize name to null
+	password="NULL";//initialize password to null
 
-	First obj1;
-	string name1;
-	string password1;
-	string mobile1;
-	ifstream in("./../database/database.txt");
+	First obj1; //creating the object of class first
+	string name1; // to store the name from the database.txt
+	string password1; //to store the password from the database.txt
+	string mobile1;  //to store mobile number from the database.txt
+	ifstream in("./../database/database.txt"); //file open in read mode
 	try
 	{
 		if(in.is_open())
@@ -125,7 +125,7 @@ int ExistingUser::nameAndPasswordValidation()
 **********************************************************************/
 int ExistingUser::validate()
 {
-	int choice; //
+	int choice=0; //choice to retry or exit
 	A:cout<<"Login Page"<<endl;
 	cout<<"Enter User name      :";
 	__fpurge(stdin);
