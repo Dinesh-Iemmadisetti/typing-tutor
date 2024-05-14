@@ -27,7 +27,8 @@ using namespace std;
 #define MOBILELENGTH 10
 #define NOTFOUND -1
 #define MAX 100
-#define PASSWORDLENGTH 8
+#define PASSWORDMINLENGTH 8
+#define PASSWORDMAXLENGTH 16
 
 vector<First> nu; // globally declared vector of type first
 
@@ -111,10 +112,8 @@ int NewUser::ageCheck()
 	}
 	else
 		return SUCCESS;
-
-
-
 }
+
 /**********************************************************************************
 **
 ** Constructor : mobileValidation
@@ -151,6 +150,12 @@ int NewUser::mobileValidation()
 					return FAIL;
 				}
 			}
+			if(mobile[0]=='0')
+			{
+				cout<<"\tMobile number can't start with 0 as a starting number"<<endl;
+				return FAIL;
+			}
+
 		}
 	}
 	return SUCCESS;
@@ -168,7 +173,7 @@ int NewUser::mobileValidation()
 ********************************************************************************/
 
 
-int NewUser::nameValidate()
+int NewUser::nameValidation()
 {
 	int pos;//to store the postion of space
 	pos=name.find(" ");//get the postion of space.
@@ -203,7 +208,7 @@ int NewUser::nameValidate()
 **
 ********************************************************************************/
 
-int NewUser :: WriteintoFile()
+int NewUser :: writeIntoFile()
 {
 	
 	ofstream w;//object of output stream
@@ -254,18 +259,18 @@ int NewUser::add_user()
 	name=data;
 //	cin>>this->name;
 //	__fpurge(stdin);
-	if(SUCCESS!=nameValidate())
+	if(SUCCESS!=nameValidation())
 	{
 			goto A;
 
 	}
 
-	P:cout<<"\t Enter Password(length should be 8 characters : ";
+	P:cout<<"\t Enter Password(length must be in between 8 - 16 characters : ";
 	cin>>this->password;
 	__fpurge(stdin);
 	
 
-	if(password.length()!=PASSWORDLENGTH)
+	if(password.length() < PASSWORDMINLENGTH || password.length() > PASSWORDMAXLENGTH)
 	{
 		cout<<"\t password did not meet the character size"<<endl;
 		goto P; 
@@ -290,14 +295,12 @@ int NewUser::add_user()
 		goto M;
 	}
 
-	if(SUCCESS==WriteintoFile())
+	if(SUCCESS==writeIntoFile())
 	{
-		cout<<"\t**** Successfully registered ****\n\n"<<endl;
 		return SUCCESS;
 	}
 	else
 	{
-		cout<<"\t *** Not Registered ***\n"<<endl;
 		return FAIL;
 	}
 	

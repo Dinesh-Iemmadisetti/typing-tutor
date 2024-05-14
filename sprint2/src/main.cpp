@@ -17,7 +17,7 @@
 #include <ExistingUser.h>
 #include <TypeWriter.h>
 using namespace std;
-
+#define FAILED 2
 #define NUMACRO '1' //macros for newuser
 #define EUMACRO '2' //macros for existinguser
 #define EXMACRO '3' //macros to exit
@@ -54,14 +54,36 @@ int main()
 			case NUMACRO:
 				NewUser *newObject;
 				newObject=new NewUser(); 
-				newObject->add_user();
-			//	delete newObject;
+				try
+				{
+					if(SUCCESS==newObject->add_user())
+						cout<<"\t**** Successfully registered ****\n\n"<<endl;
+					else	
+						throw FAIL;
+				}
+				catch(STATUS FAIL)
+				{
+					cout<<"\t *** Registration Failed ***\n"<<endl;
+				}		
+				delete newObject;
 				break;
 			case EUMACRO:
 				ExistingUser *existingObject;
 				existingObject=new ExistingUser();
-				existingObject->validate();
-			//	delete existingObject;
+				try
+	                        {
+                                        if(FAIL==existingObject->validateUser())
+			                     cout<<"\t**Logout Successful**\n\n"<<endl;
+					else
+						throw FAILED;
+				}
+
+				catch(int value)
+				{
+					if(value==FAILED)
+						cout<<"\n\t\tWelcome to Main page\n"<<endl;
+				}						
+				delete existingObject;
 				break;
 			case EXMACRO:
 				cout<<"  Exit"<<endl;

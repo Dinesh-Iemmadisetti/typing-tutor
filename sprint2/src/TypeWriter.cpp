@@ -15,6 +15,7 @@
 #include<string.h>
 #include<fstream>
 #include<stdlib.h>
+#include<vector>
 #include<stdio_ext.h>
 #include<string>
 #include<memory>
@@ -23,8 +24,10 @@
 //enumerator faii=0 success=1
 using namespace std;
 
-
 enum STATUS{FAIL,SUCCESS};
+vector<float>Each_line;
+float ewrong=0;
+float ecorrect=0;
 
 #define EASY '1'
 #define MODERATE '2'
@@ -41,6 +44,7 @@ enum STATUS{FAIL,SUCCESS};
 ** RETURNS: no return
 **
 **********************************************************************/
+
 TypeWriter::TypeWriter()
 {
 	correct_words=0;
@@ -59,6 +63,7 @@ TypeWriter::TypeWriter()
 ** RETURNS: int
 **
 **********************************************************************/
+
 int TypeWriter :: wordsAndLettersCompare(string tok1 , string tok)
 {
 
@@ -218,7 +223,10 @@ fstream TypeWriter :: selectDifficulty()
 		
         }
 	else
+	{
+		cout<<"invalid option\nChoose from below menu"<<endl;
 		goto A;
+	}
 	
 }
 
@@ -233,20 +241,60 @@ fstream TypeWriter :: selectDifficulty()
 **
 **********************************************************************/
 
+int TypeWriter :: showResults()
+{	
+	cout<<"\n\t\tResults\n\t\t_______\n"<<endl;
+	vector<float>::iterator start;
+	int init=1;
+	start=Each_line.begin();
+	cout<<"\n\tEach line result\n\t______\n"<<endl;
+	while(start!=Each_line.end())
+	{
+		
+		cout<<"  Line no :"<<init<<"\n\twrong words :"<<*start<<"  correct words :"<<*(start+1)<<"  WPM :"<<*(start +2)<<endl;;
+		start=start+3;
+		++init;
+	}
+	Each_line.clear();
+	cout<<"\n"<<endl;
+	
+	cout<<"  Total Correct words                                  : "<<correct_words<<endl;
+	cout<<"  Total  Wrong words                                   : "<<wrong_words<<endl;
+	cout<<"  Wrong letters of entire text file                    : "<<wrong_letters<<endl;
+	cout<<"  Correct letters of entire text file                  : "<<correct_letters<<endl;
+	cout<<"  Accuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100.00f)/(wrong_letters + correct_letters)<<endl;
+	cout<<"  Accuracy of correct letters for the entire Text file : "<<(100.00f-(wrong_letters*100.00f)/(wrong_letters + correct_letters))<<endl;
+      //	cout<<"Total secs"<<total<<endl;
+	try
+	{
+		if(correct_words==0)
+			throw correct_words;
+		else
+		cout<<"\n  Words Per Minutes for the entire Text file           : "<<(60.00f/((float)total/(correct_words)))<<endl;
+	}
+	catch(int x)
+	{
+		cout<<"\n  No correct words are written\n";
+		cout<<"\n  WPM(Words per Minutes) is 0"<<endl;
+	}
+	return SUCCESS;
+}
+
 int TypeWriter::typeCheckReport()
 {
 	B:
 	bool flag=false;
-	char choice;					//to select retry or exit
+	char choice;
+	float wrong_words_each_line=0;
+	float correct_words_each_line=0;						//to select retry or exit
 	char line[MAX];					//store the lines of text files
 	char write[MAX];				//store user written line
-	time_t start=0,end=0,time_per_line=0;
-//	time_t total=0;   //star time,end time,time per line,total time
-	int c_word=0;					//count word per each line
-	int c_line=0;					//count correct lines
-	int wpm=0;					//words per minute
-	int l_num=0;					//to show line numbers for text file data
-	int w_line=0;					//cout wrong line count
+	time_t start=0,end=0,time_per_line=0;		//star time,end time,time per line,total time
+	float c_word=0;					//count word per each line
+	float c_line=0;					//count correct lines
+	float wpm=0;					//words per minute
+	float l_num=0;					//to show line numbers for text file data
+	float w_line=0;					//cout wrong line count
 	string s1;					//string to store write
 	fstream inout;					//fstream obj to store return value of selectDifficulty
 	inout=selectDifficulty();			//stroing the return type
@@ -426,43 +474,41 @@ int TypeWriter::typeCheckReport()
 			cout<<"\n***************************************"<<endl;
 			c_word=0;
 			total+=time_per_line;
+			wrong_words_each_line = wrong_words - ewrong;
+			ewrong=wrong_words;
+			correct_words_each_line = correct_words - ecorrect;
+			ecorrect=correct_words;
+
+			Each_line.push_back(wrong_words_each_line);
+			Each_line.push_back(correct_words_each_line);
+			Each_line.push_back(wpm);
+			
+			
 		}
 		inout.close();
-		cout<<"\n\t\tResults\n\t\t_______\n"<<endl;
-		cout<<"  Correct words  : "<<correct_words<<endl;
-		cout<<"  Wrong words    : "<<wrong_words<<endl;
-//		cout<<"  Wrong lines    : "<<w_line<<endl;
-//		cout<<"  Correct line   : "<<c_line<<endl;
-		cout<<"  Wrong letters of entire text file                    : "<<wrong_letters<<endl;
-		cout<<"  Correct letters of entire text file                  : "<<correct_letters<<endl;
-		cout<<"  Accuracy of Wrong letters for the entire Text file   : "<<(wrong_letters*100)/(wrong_letters + correct_letters)<<endl;
-		cout<<"  Accuracy of correct letters for the entire Text file : "<<(100-(wrong_letters*100)/(wrong_letters + correct_letters))<<endl;
-                cout<<"Total secs"<<total<<endl;
 		try
 		{
-			if(correct_words==0)
-				throw correct_words;
-			else
-				cout<<"\n  Words Per Minutes for the entire Text file           : "<<(60/(total/(correct_words)))<<endl;
+			if(FAIL==showResults())
+			{
+				throw FAIL;
+			}
 		}
-		catch(int x)
-		{
-			cout<<"\n  No correct_words words are written\n";
-			cout<<"\n  Divide by Zero exception\n";
-		}
+		catch(STATUS x)
+                {
+                       cout<<"exception caught in showResults() "<<endl;
+                       exit(FAIL);
+                }
 		cout<<"\n Press 1 to retry\npress any key to exit"<<endl;
-		scanf("%c",&choice);
-		__fpurge(stdin);
-		if(choice == '1')
-		{
-			setZero();
-			goto B;
-		}
-		else
-		{
-			return FAIL;
-		}
-			
-		cout<<"\n";
-		return SUCCESS;
+			scanf("%c",&choice);
+			__fpurge(stdin);
+			if(choice == '1')
+			{
+				setZero();
+				goto B;
+			}
+			else
+			{
+				return FAIL;
+			}
+		
 }		

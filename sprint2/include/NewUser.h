@@ -22,16 +22,16 @@ class NewUser
 
 public:	
 	NewUser();
-	int WriteintoFile();                   //this function writes into the file
+	int add_user();                        //this function adds the user details
+private:
+	string name;				 //stores username
+	string password;			 //stores user password
+	int  age; 				//stores user age
+	string mobile; 				//stores user mobile
+	int writeIntoFile();                   //this function writes into the file
 	int ageCheck();                        //this function validates the age
 	int mobileValidation();                //this function validates the mobile number
-	int add_user();                        //this function adds the user details
-	int nameValidate();                    //this function validates the user name
-private:
-	string name; //stores username
-	string password; //stores user password
-	int  age; //stores user age
-	string mobile; //stores user mobile
+	int nameValidation();                    //this function validates the user name
 
 };
 #endif

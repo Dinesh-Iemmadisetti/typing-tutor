@@ -20,7 +20,7 @@ class ExistingUser
 {
 public:
 	ExistingUser(); //constructor
-	int validate(); //validates the user given data
+	int validateUser(); //validates the user given data
 private:
 	string name; //stores the user name
 	string password; // stores the user password

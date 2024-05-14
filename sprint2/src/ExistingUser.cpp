@@ -27,6 +27,7 @@ using namespace std;
 enum STATUS{FAIL,SUCCESS};
 vector<First> eu;
 
+#define BACK 2
 #define RETRY '1'
 
 /*********************************************************************
@@ -79,10 +80,7 @@ ExistingUser::ExistingUser()
 			cout<<"\t database.txt file not exists"<<endl;
 			exit(0);
 		}
-	}
-
-
-	
+	}	
 }
 
 //existing user login
@@ -97,7 +95,6 @@ ExistingUser::ExistingUser()
 **********************************************************************/
 int ExistingUser::nameAndPasswordValidation()
 {
-	
 	for(First &d : eu)
 	{
 		if(d.getName()==this->name)
@@ -114,18 +111,19 @@ int ExistingUser::nameAndPasswordValidation()
 
 	}
 	return FAIL;
-
 }
+
 /*********************************************************************
 **
-** Function    : Validate 
+** Function    : ValidateUser
 **
 ** DESCRIPTION : This function validates the Password and mask it from Users as Asterick(*).  
 **
 ** RETURNS: int
 **
 **********************************************************************/
-int ExistingUser::validate()
+
+int ExistingUser::validateUser()
 {
 	char choice; //choice to retry or exit
 	A:cout<<"\n\t\t Login Page.\n\t\t-------------\n"<<endl;
@@ -137,10 +135,9 @@ int ExistingUser::validate()
 	if(SUCCESS==nameAndPasswordValidation())
 	{
 		unique_ptr<TypeWriter>t(new TypeWriter);
-		if(t->typeCheckReport())
+		if(FAIL==t->typeCheckReport())
 		{
 			return FAIL;
-
 		}
 		else
 		{
@@ -151,7 +148,6 @@ int ExistingUser::validate()
 	{
 		cout<<"\t*** Invalid Login Credentials ***"<<endl;
 		cout<<"\t 1. To Try again \n press any key to exit"<<endl;
-	//	cin>>choice;
 		scanf("%c",&choice);
 		__fpurge(stdin);
 		if(choice==RETRY)
@@ -159,7 +155,7 @@ int ExistingUser::validate()
 		else
 		{ 
 			cout<<"choice :"<<choice<<endl;
-			return FAIL;
+			return BACK;
 		}
 	
 	}

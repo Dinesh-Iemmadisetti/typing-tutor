@@ -19,6 +19,7 @@ public:
 	TypeWriter();                                         //constructor
     	int typeCheckReport();                               //this function displays the typing report
 private:
+	int showResults();					//shows the result
 	int correct_words;                                     //stores the correct words
 	int wrong_words;                                       //stores the wrong words
 	int correct_letters;                                   //stores the correct letters
